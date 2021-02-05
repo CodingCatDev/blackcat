@@ -26,6 +26,7 @@
   "projects": {
     "blackcat": { "tags": [] },
     "blackcat-e2e": { "tags": [], "implicitDependencies": ["blackcat"] },
-    "kitten": { "tags": [] }
+    "kitten": { "tags": [] },
+    "kitten-e2e": { "tags": [], "implicitDependencies": ["kitten"] }
   }
 }

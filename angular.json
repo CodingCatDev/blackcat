@@ -51,7 +51,9 @@
               "apps/blackcat/src/favicon.ico",
               "apps/blackcat/src/assets"
             ],
-            "styles": ["apps/blackcat/src/styles.css"],
+            "styles": [
+              "apps/blackcat/src/styles.css"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -112,7 +114,9 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/blackcat"],
+          "outputs": [
+            "coverage/apps/blackcat"
+          ],
           "options": {
             "jestConfig": "apps/blackcat/jest.config.js",
             "passWithNoTests": true
@@ -171,7 +175,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/blackcat-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/blackcat-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
@@ -193,10 +199,70 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/kitten"],
+          "outputs": [
+            "coverage/libs/kitten"
+          ],
           "options": {
             "jestConfig": "libs/kitten/jest.config.js",
             "passWithNoTests": true
+          }
+        },
+        "storybook": {
+          "builder": "@nrwl/storybook:storybook",
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "port": 4400,
+            "config": {
+              "configFolder": "libs/kitten/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        },
+        "build-storybook": {
+          "builder": "@nrwl/storybook:build",
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "outputPath": "dist/storybook/kitten",
+            "config": {
+              "configFolder": "libs/kitten/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        }
+      }
+    },
+    "kitten-e2e": {
+      "root": "apps/kitten-e2e",
+      "sourceRoot": "apps/kitten-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/kitten-e2e/cypress.json",
+            "tsConfig": "apps/kitten-e2e/tsconfig.e2e.json",
+            "devServerTarget": "kitten:storybook"
+          },
+          "configurations": {
+            "ci": {
+              "devServerTarget": "kitten:storybook:ci"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/kitten-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
