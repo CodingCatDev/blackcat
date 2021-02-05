@@ -1,6 +1,6 @@
 {
-  "name": "codingcatdev",
-  "version": "0.0.0",
+  "name": "@codingcatdev/blackcat",
+  "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "ng": "nx",
