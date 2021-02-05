@@ -51,7 +51,9 @@
               "apps/blackcat/src/favicon.ico",
               "apps/blackcat/src/assets"
             ],
-            "styles": ["apps/blackcat/src/styles.css"],
+            "styles": [
+              "apps/blackcat/src/styles.css"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -112,10 +114,42 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/blackcat"],
+          "outputs": [
+            "coverage/apps/blackcat"
+          ],
           "options": {
             "jestConfig": "apps/blackcat/jest.config.js",
             "passWithNoTests": true
+          }
+        },
+        "storybook": {
+          "builder": "@nrwl/storybook:storybook",
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "port": 4400,
+            "config": {
+              "configFolder": "apps/blackcat/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        },
+        "build-storybook": {
+          "builder": "@nrwl/storybook:build",
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "outputPath": "dist/storybook/blackcat",
+            "config": {
+              "configFolder": "apps/blackcat/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
           }
         }
       }
@@ -141,7 +175,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/blackcat-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/blackcat-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
