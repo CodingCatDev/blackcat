@@ -51,9 +51,7 @@
               "apps/blackcat/src/favicon.ico",
               "apps/blackcat/src/assets"
             ],
-            "styles": [
-              "apps/blackcat/src/styles.css"
-            ],
+            "styles": ["apps/blackcat/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -114,9 +112,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/blackcat"
-          ],
+          "outputs": ["coverage/apps/blackcat"],
           "options": {
             "jestConfig": "apps/blackcat/jest.config.js",
             "passWithNoTests": true
@@ -175,9 +171,32 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
+            "lintFilePatterns": ["apps/blackcat-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "kitten": {
+      "projectType": "library",
+      "root": "libs/kitten",
+      "sourceRoot": "libs/kitten/src",
+      "prefix": "codingcatdev",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
             "lintFilePatterns": [
-              "apps/blackcat-e2e/**/*.{js,ts}"
+              "libs/kitten/src/**/*.ts",
+              "libs/kitten/src/**/*.html"
             ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/kitten"],
+          "options": {
+            "jestConfig": "libs/kitten/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }
