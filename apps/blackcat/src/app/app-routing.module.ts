@@ -10,6 +10,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('./home/home.module').then((m) => m.HomeModule),
       },
+      {
+        path: '**',
+        loadChildren: () =>
+          import('./post/post.module').then((m) => m.PostModule),
+      },
     ],
   },
 ];
