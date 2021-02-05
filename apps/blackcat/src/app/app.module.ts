@@ -6,9 +6,11 @@ import { AppComponent } from './app.component';
 
 import { KittenModule } from '@codingcatdev/kitten';
 import { AppRoutingModule } from './app-routing.module';
+import { ScullyLibModule } from '@scullyio/ng-lib';
+import { NotFoundComponent } from './not-found/not-found.component';
 @NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, BrowserAnimationsModule, KittenModule, AppRoutingModule],
+  declarations: [AppComponent, NotFoundComponent],
+  imports: [BrowserModule, BrowserAnimationsModule, KittenModule, AppRoutingModule, ScullyLibModule],
   providers: [],
   bootstrap: [AppComponent],
 })

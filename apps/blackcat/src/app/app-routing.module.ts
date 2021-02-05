@@ -11,9 +11,14 @@ const routes: Routes = [
           import('./home/home.module').then((m) => m.HomeModule),
       },
       {
-        path: '**',
+        path: '',
         loadChildren: () =>
           import('./post/post.module').then((m) => m.PostModule),
+      },
+      {
+        path: '**',
+        loadChildren: () =>
+          import('./not-found/not-found.module').then((m) => m.NotFoundModule),
       },
     ],
   },
