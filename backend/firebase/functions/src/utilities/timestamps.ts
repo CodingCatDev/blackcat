@@ -11,6 +11,7 @@ export function cleanTimestamp(data: FirebaseFirestore.DocumentData) {
       const timestamp: admin.firestore.Timestamp = docData[key];
       docData[key] = timestamp.toMillis();
     } else {
+      // eslint-disable-next-line no-self-assign
       docData[key] = docData[key];
     }
   });
