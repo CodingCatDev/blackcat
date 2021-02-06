@@ -41,7 +41,7 @@
         "build": {
           "builder": "@angular-builders/custom-webpack:browser",
           "options": {
-            "outputPath": "dist/apps/blackcat",
+            "outputPath": "dist/blackcat/browser",
             "index": "apps/blackcat/src/index.html",
             "main": "apps/blackcat/src/main.ts",
             "polyfills": "apps/blackcat/src/polyfills.ts",
@@ -149,6 +149,53 @@
             "ci": {
               "quiet": true
             }
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/blackcat/server",
+            "main": "apps/blackcat/server.ts",
+            "tsConfig": "apps/blackcat/tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "apps/blackcat/src/environments/environment.ts",
+                  "with": "apps/blackcat/src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": true
+            }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "blackcat:build",
+            "serverTarget": "blackcat:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "blackcat:build:production",
+              "serverTarget": "blackcat:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "blackcat:build:production",
+            "serverTarget": "blackcat:server:production",
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {}
           }
         }
       }

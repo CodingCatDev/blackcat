@@ -10,7 +10,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 @NgModule({
   declarations: [AppComponent, NotFoundComponent],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,
     CoreModule,
     AppRoutingModule,
