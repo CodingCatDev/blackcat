@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
-import { KittenModule } from '@codingcatdev/kitten';
+import { CoreModule } from '@codingcatdev/core';
 
 @NgModule({
   declarations: [HomeComponent],
-  imports: [CommonModule, HomeRoutingModule, KittenModule],
+  imports: [CommonModule, HomeRoutingModule, CoreModule],
 })
 export class HomeModule {}

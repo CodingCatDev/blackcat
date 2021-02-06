@@ -15,8 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@codingcatdev/kitten": ["libs/kitten/src/index.ts"],
-      "@codingcatdev/scully/*": ["scully/*"]
+      "@codingcatdev/config": ["libs/config/src/index.ts"],
+      "@codingcatdev/core": ["libs/core/src/index.ts"],
+      "@codingcatdev/services": ["libs/services/src/index.ts"],
+      "@codingcatdev/models": ["libs/models/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

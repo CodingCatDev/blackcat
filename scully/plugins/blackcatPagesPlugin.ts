@@ -1,9 +1,17 @@
 import { registerPlugin, HandledRoute } from '@scullyio/scully';
+import { postsService } from '@codingcatdev/services';
+import { PostType } from '@codingcatdev/models';
 
 export const blackcatPagesPlugin = 'blackcatPagesPlugin';
 
-function pagesPlugin(route: string, config = {}): Promise<HandledRoute[]> {
-  return Promise.resolve([{ route: '/alex' }]);
+async function pagesPlugin(
+  route: string,
+  config = {}
+): Promise<HandledRoute[]> {
+  const pages = await postsService(PostType.page);
+  const pageRoutes: HandledRoute[] = [];
+  pages.forEach((page) => pageRoutes.push({ route: `/${page.slug}` }));
+  return pageRoutes;
 }
 
 const validator = async () => [];
